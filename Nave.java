@@ -4,50 +4,84 @@ public class Nave {
     private String columna;
     private boolean estado;
     private int puntos;
-    
-    // Metodos mutadores
-    public void setNombre(String n){
-    nombre = n;
+
+    // Constructor
+    public Nave(String nombre, int fila, String columna, boolean estado, int puntos) {
+        this.nombre = nombre;
+        this.fila = fila;
+        this.columna = columna;
+        this.estado = estado;
+        this.puntos = puntos;
     }
-    
-    public void setFila(int f){
-    fila = f;
+
+    // Métodos mutadores (setters)
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-    
-    public void setColumna(String c){
-    columna = c;
+
+    public void setFila(int fila) {
+        this.fila = fila;
     }
-    
-    public void setEstado(boolean e){
-    estado = e;
+
+    public void setColumna(String columna) {
+        this.columna = columna;
     }
-    
-    public void setPuntos(int p){
-    puntos = p;
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
-    
-    // Metodos accesores
-    
-    public String getNombre(){
-    return nombre;
+
+    public void setPuntos(int puntos) {
+        this.puntos = puntos;
     }
-    
-    public int getFila(){
-    return fila;
+
+    // Métodos accesores (getters)
+    public String getNombre() {
+        return nombre;
     }
-    
-    public String getColumna(){
-    return columna;
+
+    public int getFila() {
+        return fila;
     }
-    
-    public boolean getEstado(){
-    return estado;
+
+    public String getColumna() {
+        return columna;
     }
-    
-    public int getPuntos(){
-    return puntos;
+
+    public boolean getEstado() {
+        return estado;
     }
-    // Completar con otros métodos necesarios
+
+    public int getPuntos() {
+        return puntos;
+    }
+
+    // Método para cambiar el estado de la nave de operativa a inactiva o viceversa
+    public void cambiarEstado() {
+        this.estado = !this.estado;
+    }
+
+    // Método para verificar si la nave está operativa
+    public boolean estaOperativa() {
+        return this.estado;
+    }
+
+    // Método para actualizar los puntos de la nave
+    public void actualizarPuntos(int puntosExtra) {
+        this.puntos += puntosExtra;
+    }
+
+    // Método para mover la nave a una nueva posición
+    public void moverNave(int nuevaFila, String nuevaColumna) {
+        this.fila = nuevaFila;
+        this.columna = nuevaColumna;
+    }
+
+    // Método para comparar si esta nave tiene más puntos que otra nave
+    public boolean tieneMasPuntosQue(Nave otraNave) {
+        return this.puntos > otraNave.getPuntos();
+    }
+
     // Sobrescribir el método toString() para mostrar la información de la nave
     @Override
     public String toString() {
@@ -56,6 +90,5 @@ public class Nave {
             ", Columna: " + columna +
             ", Estado: " + (estado ? "Operativa" : "Inactiva") +
             ", Puntos: " + puntos + "]";
-        }
     }
-    
+}

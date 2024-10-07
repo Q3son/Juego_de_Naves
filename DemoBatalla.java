@@ -1,44 +1,38 @@
 import java.util.*;
-
 /* Autor: Subia Huaicane Edson Fabricio
  * Colaborador: Mi persona
  * Tiempo: 40 minutos
  */
-
 public class DemoBatalla {
     public static void main(String[] args) {
-        Nave[] misNaves = new Nave[3];
-        int totalNaves = misNaves.length;
-        Scanner scanPro = new Scanner(System.in);
+        Nave[] misNaves = new Nave[3];  // Crear un arreglo de naves
+        Scanner scanPro = new Scanner(System.in);  // Lector de entradas
         String nomb, col;
         int fil, punt;
         boolean est;
 
+        // Recolección de datos y creación de cada nave
         for (int i = 0; i < misNaves.length; i++) {
             System.out.println("Nave " + (i + 1));
             System.out.print("Nombre: ");
-            nomb = scanPro.next();
-            System.out.println("Fila: ");
-            fil = scanPro.nextInt();
+            nomb = scanPro.next();  // Capturar nombre
+            System.out.print("Fila: ");
+            fil = scanPro.nextInt();  // Capturar fila
             System.out.print("Columna: ");
-            col = scanPro.next();
+            col = scanPro.next();  // Capturar columna
             System.out.print("Estado (true para operativa, false para inactiva): ");
-            est = scanPro.nextBoolean();
+            est = scanPro.nextBoolean();  // Capturar estado
             System.out.print("Puntos: ");
-            punt = scanPro.nextInt();
+            punt = scanPro.nextInt();  // Capturar puntos
 
-            misNaves[i] = new Nave(); // Se crea un objeto Nave y se asigna su referencia a misNaves
-
-            misNaves[i].setNombre(nomb);
-            misNaves[i].setFila(fil);
-            misNaves[i].setColumna(col);
-            misNaves[i].setEstado(est);
-            misNaves[i].setPuntos(punt);
+            // Crear cada nave usando el constructor con parámetros
+            misNaves[i] = new Nave(nomb, fil, col, est, punt);
         }
 
+        // Mostrar las naves creadas
         System.out.println("\nNaves creadas:");
         mostrarNaves(misNaves);
-
+        
         // Solicitar y mostrar naves por nombre
         mostrarPorNombre(misNaves, scanPro);
 
@@ -52,7 +46,6 @@ public class DemoBatalla {
         System.out.println("\nNaves desordenadas aleatoriamente:");
         mostrarNaves(navesDesordenadas);
     }
-
     // Método para mostrar todas las naves
     public static void mostrarNaves(Nave[] flota) {
         for (Nave lasNaves : flota)
