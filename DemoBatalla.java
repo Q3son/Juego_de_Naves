@@ -5,13 +5,14 @@ import java.util.*;
  */
 public class DemoBatalla {
     public static void main(String[] args) {
-        Nave[] misNaves = new Nave[3];  // Crear un arreglo de naves
-        Scanner scanPro = new Scanner(System.in);  // Lector de entradas
+        // 1. Crear un arreglo de naves
+        Nave[] misNaves = new Nave[3];  
+        Scanner scanPro = new Scanner(System.in);  
         String nomb, col;
         int fil, punt;
         boolean est;
 
-        // Recolección de datos y creación de cada nave
+        // 2. Recolección de datos y creación de cada nave
         for (int i = 0; i < misNaves.length; i++) {
             System.out.println("Nave " + (i + 1));
             System.out.print("Nombre: ");
@@ -29,30 +30,32 @@ public class DemoBatalla {
             misNaves[i] = new Nave(nomb, fil, col, est, punt);
         }
 
-        // Mostrar las naves creadas
+        // 3. Mostrar las naves creadas
         System.out.println("\nNaves creadas:");
         mostrarNaves(misNaves);
         
-        // Solicitar y mostrar naves por nombre
+        // 4. Solicitar y mostrar naves por nombre
         mostrarPorNombre(misNaves, scanPro);
 
-        // Mostrar naves según los puntos ingresados
+        // 5. Mostrar naves según los puntos ingresados
         mostrarPorPuntos(misNaves, scanPro);
 
+        // 6. Mostrar nave con mayor número de puntos
         System.out.println("\nNave con mayor número de puntos: " + mostrarMayorPuntos(misNaves));
 
-        // Mostrar naves desordenadas aleatoriamente
+        // 7. Mostrar naves desordenadas aleatoriamente
         Nave[] navesDesordenadas = desordenarNaves(misNaves);
         System.out.println("\nNaves desordenadas aleatoriamente:");
         mostrarNaves(navesDesordenadas);
     }
-    // Método para mostrar todas las naves
+
+    // 8. Método para mostrar todas las naves
     public static void mostrarNaves(Nave[] flota) {
         for (Nave lasNaves : flota)
             System.out.println(lasNaves);
     }
 
-    // Método para mostrar todas las naves de un nombre que se pide por teclado
+    // 9. Método para mostrar todas las naves de un nombre que se pide por teclado
     public static void mostrarPorNombre(Nave[] flota, Scanner scanPro) {
         System.out.println("Ingrese el nombre de la nave a mostrar: ");
         String nombreBuscado = scanPro.next();  // Cambiar a next() para evitar problemas con espacios
@@ -71,8 +74,7 @@ public class DemoBatalla {
         }
     }
 
-    // Método para mostrar todas las naves con un número de puntos inferior o igual
-    // al número de puntos que se pide por teclado
+    // 10. Método para mostrar naves con puntos inferiores o iguales a los ingresados
     public static void mostrarPorPuntos(Nave[] flota, Scanner scanPro) {
         System.out.print("Ingrese el límite de puntos: ");
         int puntosMax = scanPro.nextInt();
@@ -91,7 +93,7 @@ public class DemoBatalla {
         }
     }
 
-    // Método que devuelve la Nave con mayor número de Puntos
+    // 11. Método que devuelve la Nave con mayor número de Puntos
     public static Nave mostrarMayorPuntos(Nave[] flota) {
         Nave naveMayorPuntos = flota[0];
 
@@ -104,8 +106,7 @@ public class DemoBatalla {
         return naveMayorPuntos;
     }
 
-    // Crear un método que devuelva un nuevo arreglo de objetos con todos los objetos
-    // previamente ingresados pero aleatoriamente desordenados
+    // 12. Método que desordena aleatoriamente un arreglo de naves
     public static Nave[] desordenarNaves(Nave[] flota) {
         Nave[] flotaDesordenada = Arrays.copyOf(flota, flota.length);
         Random locoRand = new Random();
