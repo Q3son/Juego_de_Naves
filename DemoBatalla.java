@@ -177,5 +177,38 @@ public class DemoBatalla {
         }
 
         return -1;  // Retorna -1 si no encuentra ninguna nave con ese nombre
-    }        
+    }
+    // Método que ordena por número de puntos de menor a mayor utilizando el algoritmo de Selección
+    public static void ordenarPorPuntosSeleccion(Nave[] flota) {
+        int n = flota.length;
+        for (int i = 0; i < n - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < n; j++) {
+                if (flota[j].getPuntos() < flota[minIndex].getPuntos()) {
+                    minIndex = j;
+                }
+            }
+            // Intercambio de naves
+            Nave temp = flota[minIndex];
+            flota[minIndex] = flota[i];
+            flota[i] = temp;
+        }
+    }
+
+    // Método que ordena por nombre de A a Z utilizando el algoritmo de Selección
+    public static void ordenarPorNombreSeleccion(Nave[] flota) {
+        int n = flota.length;
+        for (int i = 0; i < n - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < n; j++) {
+                if (flota[j].getNombre().compareToIgnoreCase(flota[minIndex].getNombre()) < 0) {
+                    minIndex = j;
+                }
+            }
+            // Intercambio de naves
+            Nave temp = flota[minIndex];
+            flota[minIndex] = flota[i];
+            flota[i] = temp;
+        }
+    }  
 }
