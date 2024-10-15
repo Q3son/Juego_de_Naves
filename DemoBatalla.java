@@ -144,6 +144,38 @@ public class DemoBatalla {
             }
         }
     }
+    // Método que ordena por nombre de A a Z utilizando el algoritmo de Burbuja
+    public static void ordenarPorNombreBurbuja(Nave[] flota) {
+        int n = flota.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (flota[j].getNombre().compareToIgnoreCase(flota[j + 1].getNombre()) > 0) {
+                    // Intercambio de naves
+                    Nave temp = flota[j];
+                    flota[j] = flota[j + 1];
+                    flota[j + 1] = temp;
+                }
+            }
+        }
+    }
+    // Método para buscar una nave por su nombre utilizando búsqueda binaria (requiere que esté ordenado por nombre)
+    public static int busquedaBinariaNombre(Nave[] flota, String s) {
+        int inicio = 0;
+        int fin = flota.length - 1;
 
-        
+        while (inicio <= fin) {
+            int medio = (inicio + fin) / 2;
+            int comparacion = flota[medio].getNombre().compareToIgnoreCase(s);
+
+            if (comparacion == 0) {
+                return medio;  // Retorna la posición si encuentra el nombre
+            } else if (comparacion < 0) {
+                inicio = medio + 1;
+            } else {
+                fin = medio - 1;
+            }
+        }
+
+        return -1;  // Retorna -1 si no encuentra ninguna nave con ese nombre
+    }        
 }
