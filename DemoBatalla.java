@@ -210,5 +210,32 @@ public class DemoBatalla {
             flota[minIndex] = flota[i];
             flota[i] = temp;
         }
-    }  
+    }
+    // Método que ordena por número de puntos de menor a mayor utilizando el algoritmo de Inserción
+    public static void ordenarPorPuntosInsercion(Nave[] flota) {
+        int n = flota.length;
+        for (int i = 1; i < n; i++) {
+            Nave clave = flota[i];
+            int j = i - 1;
+            while (j >= 0 && flota[j].getPuntos() > clave.getPuntos()) {
+                flota[j + 1] = flota[j];
+                j--;
+            }
+            flota[j + 1] = clave;
+        }
+    }
+
+    // Método que ordena por nombre de Z a A utilizando el algoritmo de Inserción
+    public static void ordenarPorNombreInsercion(Nave[] flota) {
+        int n = flota.length;
+        for (int i = 1; i < n; i++) {
+            Nave clave = flota[i];
+            int j = i - 1;
+            while (j >= 0 && flota[j].getNombre().compareToIgnoreCase(clave.getNombre()) < 0) {
+                flota[j + 1] = flota[j];
+                j--;
+            }
+            flota[j + 1] = clave;
+        }
+    }
 }
