@@ -120,4 +120,30 @@ public class DemoBatalla {
 
         return flotaDesordenada;
     }
+    // Método para buscar la primera nave con un nombre que se pidió por teclado
+    public static int busquedaLinealNombre(Nave[] flota, String s) {
+        for (int i = 0; i < flota.length; i++) {
+            if (flota[i].getNombre().equalsIgnoreCase(s)) {
+                return i; // Retorna la posición si encuentra la nave
+            }
+        }
+        return -1; // Retorna -1 si no encuentra la nave
+    }
+
+    // Método que ordena por número de puntos de menor a mayor (Burbuja)
+    public static void ordenarPorPuntosBurbuja(Nave[] flota) {
+        int n = flota.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (flota[j].getPuntos() > flota[j + 1].getPuntos()) {
+                    // Intercambia las naves
+                    Nave temp = flota[j];
+                    flota[j] = flota[j + 1];
+                    flota[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+        
 }
